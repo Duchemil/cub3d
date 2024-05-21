@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:54:39 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/05/17 16:59:57 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/05/21 14:35:49 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	on_destroy(t_data *data)
 {
+	for (int i = 0; i < data->info.rows; i++)
+		free(data->info.map[i]);
+	free(data->info.map);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
