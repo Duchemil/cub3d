@@ -6,13 +6,13 @@
 #    By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 13:31:42 by lduchemi          #+#    #+#              #
-#    Updated: 2024/05/21 17:44:12 by lduchemi         ###   ########.fr        #
+#    Updated: 2024/05/22 16:39:19 by lduchemi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 CC = gcc -Wall -Wextra -Werror -g3
-OBJS = ./src/main.c ./src/on_action.c ./src/cub3D.h ./src/ft_check.c ./src/ft_exec.c ./src/ft_print.c
+OBJS = ./src/main.c ./src/on_action.c ./src/cub3D.h ./src/ft_check.c ./src/ft_exec.c ./src/ft_print.c ./src/ft_movement.c ./src/utils.c
 INCLUDES = -I/usr/include -Imlx
 
 %.o: %.c
