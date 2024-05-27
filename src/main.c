@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:47:57 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/05/27 15:13:34 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/05/27 18:17:15 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,11 @@ int	main(int argc, char **argv)
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, 720, 480, "cube3D");
+	data.win_ptr = mlx_new_window(data.mlx_ptr, 720, 480, "cub3D");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
 	init_map(&data);
+	// parsing(&data, argv[1]);
 	printf("Map:\n");
 	for (int i = 0; i < data.info.rows; i++)
 	{

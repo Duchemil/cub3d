@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/05/27 15:14:28 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/05/27 16:24:57 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,13 @@ typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*textures[5];
+	char	*textures[4];
 	t_info	info;
 }			t_data;
 
 /*				MAIN			*/
 
+int			parsing(t_data *data, char *argv);
 int			main(int argc, char **argv);
 void		ft_init(t_data *data);
 
@@ -89,6 +90,13 @@ void		buff_erase(char *buff);
 char		*test(char *s1, char *dest);
 char		*ft_gnl_strjoin(char *s1, char *s2);
 int			ft_strlen(char *s, int j);
+int			ft_gnl_strchr(char *s);
+
+/*				PARSING			*/
+
+int			parsing(t_data *data, char *argv);
+void		trim_newline(char *str);
+int			get_textures(t_data *data, char *argv);
 
 /*				UTILS			*/
 
