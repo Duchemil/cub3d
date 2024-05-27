@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:22:58 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/05/22 17:59:10 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/05/27 13:43:50 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ int	cub3d_exec(t_data *data)
 		data->info.hit = 0;
 		cub3d_exec2(data, x);
 		x++;
-		// printf("X : %f, screen.x : %f\n", x , data->info.screen.x);
 	}
-	// printf("X : %f, data->info.screen.x : %f\n", x, data->info.screen.x);
 	return (0);
 }
 
@@ -89,10 +87,7 @@ void	cub3d_exec3(t_data *data, int x)
 			data->info.side = 1;
 		}
 		if (data->info.map[(int)data->info.box.x][(int)data->info.box.y] == '1')
-		{
-			// printf("Hit, data->info.map[%d][%d] : %c\n", (int)data->info.box.x, (int)data->info.box.y, data->info.map[(int)data->info.box.x][(int)data->info.box.y]);
 			data->info.hit = 1;
-		}
 	}
 	if (data->info.side == 0)
 		data->info.perpWallDist = (data->info.sideDist.x
@@ -109,10 +104,7 @@ void	cub3d_exec4(t_data *data, int x)
 	double	drawStart;
 	double	drawEnd;
 
-	// printf("data->info.screen.y : %f, data->info.perpWallDist : %f\n",
-	//		data->info.screen.y, data->info.perpWallDist);
 	lineHeight = (int)(data->info.screen.y / data->info.perpWallDist);
-	// printf("Lineheight : %d\n", lineHeight);
 	drawStart = (double)(-lineHeight) / 2 + data->info.screen.y / 2;
 	if (drawStart < 0)
 		drawStart = 0;

@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/05/22 18:03:30 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:14:28 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,25 @@ void		ft_init(t_data *data);
 
 int			on_destroy(t_data *data);
 int			on_keypress(int keysym, t_data *data);
+int			on_mouse(int x, int y, t_data *data);
 
 /*				MOVEMENT		*/
 
 void		ft_movement(int keysym, t_data *data);
 void		ft_movement2(int keysym, t_data *data);
+void		ft_turn(t_data *data, double speed);
 
 /*				CHECK			*/
 
 int			ft_cub(char *filename);
+
+/*				GNL				*/
+
+void		get_next_line(int fd, int line, t_info *map);
+void		buff_erase(char *buff);
+char		*test(char *s1, char *dest);
+char		*ft_gnl_strjoin(char *s1, char *s2);
+int			ft_strlen(char *s, int j);
 
 /*				UTILS			*/
 

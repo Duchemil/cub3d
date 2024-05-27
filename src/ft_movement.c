@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:23:58 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/05/22 18:11:53 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:44:46 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,20 @@ void	ft_movement2(int keysym, t_data *data)
 		cub3d_exec(data);
 		return ;
 	}
+}
+
+void	ft_turn(t_data *data, double speed)
+{
+	double	oldDir;
+	double	oldPlane;
+
+	oldDir = data->info.dir.x;
+	oldPlane = data->info.plane.x;
+	data->info.dir.x = data->info.dir.x * cos(speed) - data->info.dir.y
+		* sin(speed);
+	data->info.dir.y = oldDir * sin(speed) + data->info.dir.y * cos(speed);
+	data->info.plane.x = data->info.plane.x * cos(speed) - data->info.plane.y
+		* sin(speed);
+	data->info.plane.y = oldPlane * sin(speed) + data->info.plane.y
+		* cos(speed);
 }

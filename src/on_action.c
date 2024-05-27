@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:54:39 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/05/22 18:41:42 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:44:42 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,26 @@ int	on_keypress(int keysym, t_data *data)
 		// mlx_clear_window(data->mlx_ptr, data->win_ptr);
 		ft_movement(keysym, data);
 	}
+	if (keysym == 65363 || keysym == 65361)
+	{
+		if (keysym == 65363)
+			ft_turn(data, -0.03);
+		else
+			ft_turn(data, 0.03);
+	}
+	return (0);
+}
+
+int	on_mouse(int x, int y, t_data *data)
+{
+	if (x == data->info.screen.x / 2)
+		return (0);
+	else if (x > data->info.screen.x / 2)
+		ft_turn(data, ((double)x - data->info.screen.x) / 12000.0);
+	else if (x < data->info.screen.x / 2)
+		ft_turn(data, (data->info.screen.x - (double)x) / 12000.0);
+	x = data->info.screen.x / 2;
+	y = data->info.screen.y / 2;
+	mlx_mouse_move(data->mlx_ptr, data->win_ptr, x, y);
 	return (0);
 }

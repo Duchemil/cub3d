@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:47:57 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/05/22 18:13:13 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:13:34 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	ft_init(t_data *data)
 	data->info.hit = 0;
 }
 
-
 #define MAP_ROWS 15
 #define MAP_COLS 16 // One extra for the null terminator '\0'
 
@@ -39,11 +38,11 @@ void	init_map(t_data *data)
 {
 	char new_map[MAP_ROWS][MAP_COLS] = {
 		"111111111111111",
-		"100000000000001",
-		"100000000000001",
+		"100101010000001",
+		"100000010000001",
 		"101000000000001",
 		"101000111000001",
-		"101000100000001",
+		"101011100000001",
 		"101000100111111",
 		"101000100100001",
 		"101000100100001",
@@ -107,6 +106,7 @@ int	main(int argc, char **argv)
 	{
 		printf("%s\n", data.info.map[i]);
 	}
+	mlx_hook(data.win_ptr, MotionNotify, PointerMotionMask, &on_mouse, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &on_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, (1L << 17), &on_destroy, &data);
 	// cub3d_exec(&data);
