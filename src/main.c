@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:47:57 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/05/27 18:17:15 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/06 15:15:42 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,16 @@ void	init_map(t_data *data)
 	data->info.moveSpeed = 0.099;
 	data->info.plane.x = 0;
 	data->info.plane.y = 0.66;
+	data->textures[0] = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./textures/BlueWall.xpm", 64, 64);
+	data->textures[1] = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./textures/GrayBrick.xpm", 64, 64);
+	data->textures[2] = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./textures/GrayWall.xpm", 64, 64);
+	data->textures[3] = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./textures/RedWall.xpm", 64, 64);
+	// if (!data->textures[0])
+	// 	return (1);
 }
 
 int	main(int argc, char **argv)

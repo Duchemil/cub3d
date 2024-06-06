@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/05/27 16:24:57 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:10:26 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ typedef struct s_pos
 typedef struct s_info_map
 {
 	char	**map;
+	char	*addr;
 	int		rows;
 	int		cols;
+	int		ttp;
 	t_pos	start;
 	t_pos	player;
 	t_pos	box;
@@ -46,6 +48,9 @@ typedef struct s_info_map
 	t_pos	sideDist;
 	t_pos	camera;
 	t_pos	step;
+	t_pos	text;
+	double	line_step;
+	double	text_pos;
 	double	perpWallDist;
 	double	moveSpeed;
 	int		fd;
