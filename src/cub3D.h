@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/06 17:10:26 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:18:05 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,20 @@ typedef struct s_pos
 	double	y;
 }			t_pos;
 
+typedef struct img
+{
+	void	*img_m;
+	char	*addr;
+	int		endian;
+	int		line_length;
+}			t_img;
+
 typedef struct s_info_map
 {
 	char	**map;
-	char	*addr;
 	int		rows;
 	int		cols;
-	int		ttp;
+	t_img	ttp;
 	t_pos	start;
 	t_pos	player;
 	t_pos	box;
@@ -62,8 +69,20 @@ typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	char	*textures[4];
+	void	*img_ptr;
+	char	*addr;
+	int		line_length;
+	int		endian;
+	int		coord_texture;
+	int		size_tex;
+	int		bits_per_pixel;
+	t_img	NO;
+	t_img	SO;
+	t_img	EA;
+	t_img	WE;
 	t_info	info;
+	int		floor_color;
+	int		ceiling_color;
 }			t_data;
 
 /*				MAIN			*/
@@ -87,6 +106,7 @@ void		ft_turn(t_data *data, double speed);
 /*				CHECK			*/
 
 int			ft_cub(char *filename);
+int			init_img(t_data *data);
 
 /*				GNL				*/
 
@@ -116,7 +136,8 @@ void		cub3d_exec4(t_data *data, int x);
 
 /*				PRINT			*/
 
-void		verticalLine(t_data *data, int x, double drawStart, double drawEnd,
-				int color);
+void		verticalLine(t_data *data, int x, double drawStart, double drawEnd);
+void		print_texture(t_data *data, int x, int y, int color);
+void		choose_texture(t_data *data);
 
 #endif

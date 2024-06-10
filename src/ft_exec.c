@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:22:58 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/06 16:04:40 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:06:09 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,9 @@ void	cub3d_exec4(t_data *data, int x)
 	data->info.line_step = 1.0 * 64 / lineHeight;
 	data->info.text_pos = (drawStart - (double)data->info.screen.y / 2
 			+ lineHeight / 2) * data->info.line_step;
-	verticalLine(data, x, drawStart, drawEnd, 0xFF0000);
+	if (data->info.side == 0)
+		data->coord_texture = ((data->info.step.y - (int)data->info.step.y) * 64);
+	if (data->info.side == 1)
+		data->coord_texture = ((data->info.step.x - (int)data->info.step.x) * 64);
+	verticalLine(data, x, drawStart, drawEnd);
 }

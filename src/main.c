@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:47:57 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/06 15:15:42 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:19:26 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,31 @@ void	init_map(t_data *data)
 	data->info.moveSpeed = 0.099;
 	data->info.plane.x = 0;
 	data->info.plane.y = 0.66;
-	data->textures[0] = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./textures/BlueWall.xpm", 64, 64);
-	data->textures[1] = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./textures/GrayBrick.xpm", 64, 64);
-	data->textures[2] = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./textures/GrayWall.xpm", 64, 64);
-	data->textures[3] = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./textures/RedWall.xpm", 64, 64);
+	data->ceiling_color = 0x0000FF;
+	data->floor_color = 0x808080;
+	data->bits_per_pixel = 32;
+	data->size_tex = 64;
+	printf("Huh\n");
+	printf("Duh\n");
+	data->NO.img_m = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./textures/BlueWall.xpm", &data->size_tex, &data->size_tex);
+	printf("La?\n");
+	data->SO.img_m = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./textures/GrayBrick.xpm", &data->size_tex, &data->size_tex);
+	data->EA.img_m = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./textures/GrayWall.xpm", &data->size_tex, &data->size_tex);
+	data->WE.img_m = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./textures/RedWall.xpm", &data->size_tex, &data->size_tex);
+	data->NO.addr = mlx_get_data_addr(data->NO.img_m, &data->size_tex,
+		&data->NO.line_length, &data->NO.endian);
+	data->SO.addr = mlx_get_data_addr(data->SO.img_m, &data->size_tex,
+		&data->SO.line_length, &data->SO.endian);
+	data->EA.addr = mlx_get_data_addr(data->EA.img_m, &data->size_tex,
+		&data->EA.line_length, &data->EA.endian);
+	data->WE.addr = mlx_get_data_addr(data->WE.img_m, &data->size_tex,
+		&data->WE.line_length, &data->WE.endian); // a faire dans le parsing + if (!data->WE.addr/img_m)
+	printf("Init img done\n");
+	init_img(data);
 	// if (!data->textures[0])
 	// 	return (1);
 }
