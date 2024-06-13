@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:22:58 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/13 14:40:58 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:37:17 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	cub3d_exec(t_data *data)
 		cub3d_exec2(data, x);
 		x++;
 	}
-	print_minimap(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 	return (0);
 }

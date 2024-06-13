@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/13 15:03:08 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:05:44 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,5 @@ int			get_pixel_color(t_img *img, int x, int y);
 /*				MINIMAP			*/
 
 void		print_minimap(t_data *data);
-void		minimap_pixel(t_data *data, int map_x, int map_y, char type);
 
 #endif

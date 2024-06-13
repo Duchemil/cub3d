@@ -6,7 +6,7 @@
 #    By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 13:31:42 by lduchemi          #+#    #+#              #
-#    Updated: 2024/05/27 15:11:39 by lduchemi         ###   ########.fr        #
+#    Updated: 2024/06/13 14:26:07 by lduchemi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC =	./src/ft_check.c \
 		./src/gnl.c \
 		./src/on_action.c \
 		./src/parsing.c \
+		./src/minimap.c \
 		./src/utils.c
 
 OBJ = $(SRC:.c=.o)
