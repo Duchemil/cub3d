@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:03:19 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/10 15:19:43 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:17:54 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,10 @@ int	init_img(t_data *data)
 	data->img_ptr = mlx_new_image(data->mlx_ptr, 720, 480);
 	if (!data->img_ptr)
 		return (on_destroy(data), 1);
-	printf("Ici\n");
 	data->addr = mlx_get_data_addr(data->img_ptr, &data->bits_per_pixel, &data->line_length,
 			&data->endian);
-	printf("dah\n");
 	if (!data->addr)
 		return (on_destroy(data), 1);
+	printf("init img good\n");
 	return (0);
 }

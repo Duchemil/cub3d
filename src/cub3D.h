@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/10 15:18:05 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:52:47 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct img
 	char	*addr;
 	int		endian;
 	int		line_length;
+	int		bits_per_pixel;
 }			t_img;
 
 typedef struct s_info_map
@@ -42,7 +43,7 @@ typedef struct s_info_map
 	char	**map;
 	int		rows;
 	int		cols;
-	t_img	ttp;
+	t_img	*ttp;
 	t_pos	start;
 	t_pos	player;
 	t_pos	box;
@@ -56,6 +57,7 @@ typedef struct s_info_map
 	t_pos	camera;
 	t_pos	step;
 	t_pos	text;
+	t_pos	wall_dir;
 	double	line_step;
 	double	text_pos;
 	double	perpWallDist;
@@ -139,5 +141,6 @@ void		cub3d_exec4(t_data *data, int x);
 void		verticalLine(t_data *data, int x, double drawStart, double drawEnd);
 void		print_texture(t_data *data, int x, int y, int color);
 void		choose_texture(t_data *data);
+int			get_pixel_color(t_img *img, int x, int y);
 
 #endif

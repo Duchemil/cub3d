@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:47:57 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/10 15:19:26 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:56:41 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,26 +86,22 @@ void	init_map(t_data *data)
 	data->floor_color = 0x808080;
 	data->bits_per_pixel = 32;
 	data->size_tex = 64;
-	printf("Huh\n");
-	printf("Duh\n");
 	data->NO.img_m = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./textures/BlueWall.xpm", &data->size_tex, &data->size_tex);
-	printf("La?\n");
 	data->SO.img_m = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./textures/GrayBrick.xpm", &data->size_tex, &data->size_tex);
 	data->EA.img_m = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./textures/GrayWall.xpm", &data->size_tex, &data->size_tex);
+			"./textures/BrownWall.xpm", &data->size_tex, &data->size_tex);
 	data->WE.img_m = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./textures/RedWall.xpm", &data->size_tex, &data->size_tex);
-	data->NO.addr = mlx_get_data_addr(data->NO.img_m, &data->size_tex,
+	data->NO.addr = mlx_get_data_addr(data->NO.img_m, &data->NO.bits_per_pixel,
 		&data->NO.line_length, &data->NO.endian);
-	data->SO.addr = mlx_get_data_addr(data->SO.img_m, &data->size_tex,
+	data->SO.addr = mlx_get_data_addr(data->SO.img_m, &data->SO.bits_per_pixel,
 		&data->SO.line_length, &data->SO.endian);
-	data->EA.addr = mlx_get_data_addr(data->EA.img_m, &data->size_tex,
+	data->EA.addr = mlx_get_data_addr(data->EA.img_m, &data->EA.bits_per_pixel,
 		&data->EA.line_length, &data->EA.endian);
-	data->WE.addr = mlx_get_data_addr(data->WE.img_m, &data->size_tex,
+	data->WE.addr = mlx_get_data_addr(data->WE.img_m, &data->WE.bits_per_pixel,
 		&data->WE.line_length, &data->WE.endian); // a faire dans le parsing + if (!data->WE.addr/img_m)
-	printf("Init img done\n");
 	init_img(data);
 	// if (!data->textures[0])
 	// 	return (1);
@@ -129,11 +125,11 @@ int	main(int argc, char **argv)
 		return (free(data.mlx_ptr), 1);
 	init_map(&data);
 	// parsing(&data, argv[1]);
-	printf("Map:\n");
-	for (int i = 0; i < data.info.rows; i++)
-	{
-		printf("%s\n", data.info.map[i]);
-	}
+	// printf("Map:\n");
+	// for (int i = 0; i < data.info.rows; i++)
+	// {
+	// 	printf("%s\n", data.info.map[i]);
+	// }
 	mlx_hook(data.win_ptr, MotionNotify, PointerMotionMask, &on_mouse, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &on_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, (1L << 17), &on_destroy, &data);
