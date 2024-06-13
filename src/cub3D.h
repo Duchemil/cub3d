@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/13 15:03:08 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:51:01 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ typedef struct img
 	int		line_length;
 	int		bits_per_pixel;
 }			t_img;
+
+typedef struct s_parsing
+{
+	char	map[5000 + 1];
+	int	fd;
+	int	j;
+	int	index;
+	int	line;
+	int	big_line;
+	int	init;
+	int	max_height;
+}	t_parse;
 
 typedef struct s_info_map
 {
@@ -122,8 +134,6 @@ int			ft_gnl_strchr(char *s);
 /*				PARSING			*/
 
 int			parsing(t_data *data, char *argv);
-void		trim_newline(char *str);
-int			get_textures(t_data *data, char *argv);
 
 /*				UTILS			*/
 

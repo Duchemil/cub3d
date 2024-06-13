@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:47:57 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/13 15:44:35 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:44:48 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,15 +107,12 @@ void	init_map(t_data *data)
 	// 	return (1);
 }
 
-int	main(int argc, char **argv)
+int	main(int ac, char **argv)
 {
 	t_data	data;
 
 	(void)argv;
-	if (argc != 2)
-		return (printf("Error, args aren't correct\n"));
-	if (ft_cub(argv[1]) == 0)
-		return (printf("Error, map isn't correct\n"));
+	parsing(ac, argv);
 	ft_init(&data);
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
