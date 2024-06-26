@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/13 16:51:01 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/26 17:06:55 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,20 @@ typedef struct img
 	int		endian;
 	int		line_length;
 	int		bits_per_pixel;
+	int		init;
 }			t_img;
 
 typedef struct s_parsing
 {
 	char	map[5000 + 1];
-	int	fd;
-	int	j;
-	int	index;
-	int	line;
-	int	big_line;
-	int	init;
-	int	max_height;
-}	t_parse;
+	int		fd;
+	int		j;
+	int		index;
+	int		line;
+	int		big_line;
+	int		init;
+	int		max_height;
+}			t_parse;
 
 typedef struct s_info_map
 {
@@ -90,6 +91,8 @@ typedef struct s_data
 	int		coord_texture;
 	int		size_tex;
 	int		bits_per_pixel;
+	int		verif[8];
+	t_parse	parse;
 	t_img	NO;
 	t_img	SO;
 	t_img	EA;
@@ -137,7 +140,16 @@ int			parsing(t_data *data, char *argv);
 
 /*				UTILS			*/
 
+static int	check_split(int i, char c, int *index, char *s);
+static int	count_word(char *s, char c);
+static void	init_split(int *i, int *index, int *indice);
+char		*ft_substr(char *s, int start, int len);
+char		**ft_split(char *s, char c);
+
+/*				UTILS			*/
+
 double		abs_val(double nb);
+void		ft_bzero(void *s, size_t n);
 
 /*				EXEC			*/
 

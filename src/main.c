@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:47:57 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/13 16:44:48 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:39:44 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ void	ft_init(t_data *data)
 	data->info.camera.x = 0;
 	data->info.camera.y = 0;
 	data->info.hit = 0;
+	data->verif[0] = 0;
+	data->verif[1] = 0;
+	data->verif[2] = 0;
+	data->verif[3] = 0;
+	data->verif[4] = 0;
+	data->verif[5] = 0;
+	data->verif[6] = 0;
+	data->verif[7] = 0;
+	data->verif[8] = 0;
 }
 
 #define MAP_ROWS 15

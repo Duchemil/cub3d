@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:06:28 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/13 16:56:33 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:33:10 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	parsing(t_data *data, int ac, char *argv)
 	parse->fd = open(argv[1], O_RDONLY);
 	if (!parse)
 		return (1);
+	data->parse = parse;
 	if (ac != 2)
 		return (printf("Error, args aren't correct\n"));
 	if (ft_cub(argv[1]) == 0)
@@ -30,4 +31,6 @@ int	parsing(t_data *data, int ac, char *argv)
 		return (1);
 	return (0);
 }
+
+int	parsing2(t_data *data, int ac, char *argv)
 
