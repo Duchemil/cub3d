@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:02:13 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/26 17:18:12 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:23:19 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,34 @@ int	get_we_img(t_data *data, char *path)
 			&we->line_length, &we->endian);
 	data->verif[2] = 1;
 	data->WE.init = 1;
+	return (0);
+}
+
+int	get_ceil_color(t_data *data, char *path)
+{
+	int		r;
+	int		g;
+	int		b;
+	char	**color;
+
+	if (data->ceiling_color != -1)
+		return (write(2, "Error\nMore than one ceiling color in map\n", 42));
+	color = ft_split(path, ' ');
+	if (!color || color[0] == NULL || color[1] == NULL || color[2] == NULL
+		|| ft_isnum(color[0]) == 1 || ft_isnum(color[1]) == 1
+		|| ft_isnum(color[2]) == 1)
+	{
+		free_array(color);
+		return (write(2, "Error\nCeiling color isn't numerical\n", 37), -1);
+	}
+	r = ft_atoi(color[0]);
+	g = ft_atoi(color[1]);
+	b = ft_atoi(color[2]);
+	free_array(color);
+	if ((r > 255 || r < 0) || (g > 255 || g < 0) || (b > 255 || b < 0))
+		return (write(2, "Error\nCeiling color value not within 0 - 255\n", 46),
+			-1);
+	data->ceiling_color = (r << 16 | g << 8 || b);
+	data->verif[4];
 	return (0);
 }

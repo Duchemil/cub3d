@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/26 17:06:55 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:35:02 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define CUB3D_H
 
 # include "../mlx/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
@@ -104,7 +102,6 @@ typedef struct s_data
 
 /*				MAIN			*/
 
-int			parsing(t_data *data, char *argv);
 int			main(int argc, char **argv);
 void		ft_init(t_data *data);
 
@@ -131,14 +128,14 @@ void		get_next_line(int fd, int line, t_info *map);
 void		buff_erase(char *buff);
 char		*test(char *s1, char *dest);
 char		*ft_gnl_strjoin(char *s1, char *s2);
-int			ft_strlen(char *s, int j);
+int			ft_strlen_gnl(char *s, int j);
 int			ft_gnl_strchr(char *s);
 
 /*				PARSING			*/
 
-int			parsing(t_data *data, char *argv);
+int			parsing(t_data *data, int ac, char *argv);
 
-/*				UTILS			*/
+/*				SPLIT			*/
 
 static int	check_split(int i, char c, int *index, char *s);
 static int	count_word(char *s, char c);
@@ -146,10 +143,34 @@ static void	init_split(int *i, int *index, int *indice);
 char		*ft_substr(char *s, int start, int len);
 char		**ft_split(char *s, char c);
 
+/*				GET_TEXT		*/
+
+int			get_textures(t_data *data, char *argv);
+int			check_read(char *buff, char *str, t_data *data);
+int			assign_text(t_data *data, char *str);
+void		check_line_name(char **tab, t_data *data, int *error);
+
+/*				GET_IMG			*/
+
+int			get_no_img(t_data *data, char *path);
+int			get_so_img(t_data *data, char *path);
+int			get_ea_img(t_data *data, char *path);
+int			get_we_img(t_data *data, char *path);
+int			get_ceil_color(t_data *data, char *path);
+int			get_floor_color(t_data *data, char *path);
+int			get_anim_img(t_data *data, char *path);
+int			get_anim2_img(t_data *data, char *path);
+int			get_door_img(t_data *data, char *path);
+
 /*				UTILS			*/
 
 double		abs_val(double nb);
 void		ft_bzero(void *s, size_t n);
+void		free_array(char **tab);
+int			ft_atoi(const char *str);
+int			ft_isnum(char *str);
+
+int			ft_strlen(char *str);
 
 /*				EXEC			*/
 

@@ -6,13 +6,13 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:45:43 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/26 16:55:24 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:14:19 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	check(int i, char c, int *index, char *s)
+static int	check_split(int i, char c, int *index, char *s)
 {
 	if (s[i] != c && *index < 0)
 	{

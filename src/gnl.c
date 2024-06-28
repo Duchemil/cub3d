@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:09:28 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/05/27 15:13:54 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:11:51 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	buff_erase(char *buff)
 	while (buff[i] != '\n')
 		i++;
 	i++;
-	while (j < ft_strlen(buff, 0) - i)
+	while (j < ft_strlen_gnl(buff, 0) - i)
 	{
 		buff[j] = buff[i + j];
 		j++;
@@ -70,7 +70,7 @@ char	*test(char *s1, char *dest)
 	return (dest);
 }
 
-int	ft_strlen(char *s, int j)
+int	ft_strlen_gnl(char *s, int j)
 {
 	int		i;
 	char	c;
@@ -92,7 +92,7 @@ char	*ft_gnl_strjoin(char *s1, char *s2)
 	int		i;
 
 	i = 0;
-	dest = malloc(sizeof(char) * ((ft_strlen(s1, 1) + ft_strlen(s2, 0)) + 1));
+	dest = malloc(sizeof(char) * ((ft_strlen_gnl(s1, 1) + ft_strlen_gnl(s2, 0)) + 1));
 	if (dest)
 	{
 		while (s1 && s1[i])

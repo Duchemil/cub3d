@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:47:57 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/26 16:39:44 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:35:27 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	ft_init(t_data *data)
 	data->info.camera.x = 0;
 	data->info.camera.y = 0;
 	data->info.hit = 0;
+	data->floor_color = -1;
+	data->ceiling_color = -1;
 	data->verif[0] = 0;
 	data->verif[1] = 0;
 	data->verif[2] = 0;
@@ -121,8 +123,8 @@ int	main(int ac, char **argv)
 	t_data	data;
 
 	(void)argv;
-	parsing(ac, argv);
 	ft_init(&data);
+	parsing(&data, ac, argv[1]);
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);

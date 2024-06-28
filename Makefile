@@ -6,7 +6,7 @@
 #    By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 13:31:42 by lduchemi          #+#    #+#              #
-#    Updated: 2024/06/13 14:26:07 by lduchemi         ###   ########.fr        #
+#    Updated: 2024/06/28 15:19:46 by lduchemi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,17 @@ SRC =	./src/ft_check.c \
 		./src/ft_exec.c \
 		./src/ft_movement.c \
 		./src/ft_print.c \
-		./src/main.c \
+		./src/ft_split.c \
+		./src/get_image.c \
+		./src/get_image2.c \
+		./src/get_texture.c \
 		./src/gnl.c \
+		./src/main.c \
+		./src/minimap.c \
 		./src/on_action.c \
 		./src/parsing.c \
-		./src/minimap.c \
-		./src/utils.c
+		./src/utils.c \
+		./src/utils2c
 
 OBJ = $(SRC:.c=.o)
 
