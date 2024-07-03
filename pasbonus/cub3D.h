@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/13 14:05:44 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:15:48 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int			ft_gnl_strchr(char *s);
 
 int			parsing(t_data *data, char *argv);
 void		trim_newline(char *str);
-int			get_textures(t_data *data, char *argv);
+int			get_textures(t_data *data);
 
 /*				UTILS			*/
 

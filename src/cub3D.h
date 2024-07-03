@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/28 15:35:02 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:52:02 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_parsing
 typedef struct s_info_map
 {
 	char	**map;
+	char	player_dir;
 	int		rows;
 	int		cols;
 	t_img	*ttp;
@@ -90,7 +91,7 @@ typedef struct s_data
 	int		size_tex;
 	int		bits_per_pixel;
 	int		verif[8];
-	t_parse	parse;
+	t_parse	*parse;
 	t_img	NO;
 	t_img	SO;
 	t_img	EA;
@@ -120,7 +121,10 @@ void		ft_turn(t_data *data, double speed);
 /*				CHECK			*/
 
 int			ft_cub(char *filename);
-int			init_img(t_data *data);
+int			ft_check_comps(t_data *data);
+int			valid_comp(char c);
+void		find_big_line(char *map, t_parse *parse);
+int			ft_winnable(t_data *data, char **map, int y, int x);
 
 /*				GNL				*/
 
@@ -131,9 +135,23 @@ char		*ft_gnl_strjoin(char *s1, char *s2);
 int			ft_strlen_gnl(char *s, int j);
 int			ft_gnl_strchr(char *s);
 
+/*				GET_MAP			*/
+
+int			ft_strnlen(char *src, char c);
+void		nullify_map(t_data *data, t_parse *parse);
+char		*ft_strdup_line(const char *s1);
+int			init_map(t_data *data, char *map, t_parse *parse);
+
 /*				PARSING			*/
 
-int			parsing(t_data *data, int ac, char *argv);
+int			parsing(t_data *data, char *argv);
+int			parsing2(t_data *data, char *map, t_parse *parse);
+int			duplicate_map(t_data *data);
+
+/*				INIT			*/
+
+int			init_img(t_data *data);
+void		init_player(t_data *data);
 
 /*				SPLIT			*/
 
@@ -145,7 +163,7 @@ char		**ft_split(char *s, char c);
 
 /*				GET_TEXT		*/
 
-int			get_textures(t_data *data, char *argv);
+int			get_textures(t_data *data, int fd);
 int			check_read(char *buff, char *str, t_data *data);
 int			assign_text(t_data *data, char *str);
 void		check_line_name(char **tab, t_data *data, int *error);
@@ -157,6 +175,7 @@ int			get_so_img(t_data *data, char *path);
 int			get_ea_img(t_data *data, char *path);
 int			get_we_img(t_data *data, char *path);
 int			get_ceil_color(t_data *data, char *path);
+
 int			get_floor_color(t_data *data, char *path);
 int			get_anim_img(t_data *data, char *path);
 int			get_anim2_img(t_data *data, char *path);
@@ -171,6 +190,7 @@ int			ft_atoi(const char *str);
 int			ft_isnum(char *str);
 
 int			ft_strlen(char *str);
+char		*ft_strdup(const char *s1);
 
 /*				EXEC			*/
 

@@ -6,13 +6,13 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:03:50 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/28 15:16:03 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:20:52 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	get_textures(t_data *data, char *argv)
+int	get_textures(t_data *data, int fd)
 {
 	char	buff[2];
 	char	str[1024];
@@ -22,7 +22,7 @@ int	get_textures(t_data *data, char *argv)
 	ft_bzero(str, 1024);
 	while (1)
 	{
-		bytes = read(data->parse.fd, &buff, 1);
+		bytes = read(fd, &buff, 1);
 		if (bytes <= 0)
 			break ;
 		buff[bytes] = '\0';

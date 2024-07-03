@@ -1,0 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/03 15:35:03 by lduchemi          #+#    #+#             */
+/*   Updated: 2024/07/03 16:00:53 by lduchemi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3D.h"
+
+int	init_img(t_data *data)
+{
+	data->img_ptr = mlx_new_image(data->mlx_ptr, 720, 480);
+	if (!data->img_ptr)
+		return (on_destroy(data), 1);
+	data->addr = mlx_get_data_addr(data->img_ptr, &data->bits_per_pixel,
+			&data->line_length, &data->endian);
+	if (!data->addr)
+		return (on_destroy(data), 1);
+	return (0);
+}
+
+void	init_player(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (data->info.map[j])
+	{
+		i = 0;
+		while (data->info.map[j][i] != '\0')
+		{
+			if (data->info.map[j][i] == 'N' || data->info.map[j][i] == 'S'
+				|| data->info.map[j][i] == 'E' || data->info.map[j][i] == 'W')
+			{
+				data->info.player.x = j + 0.5;
+				data->info.player.y = i + 0.5;
+				data->info.player_dir = data->info.map[j][i];
+				data->info.map[j][i] = '0';
+				break ;
+			}
+			i++;
+		}
+		if (data->info.player.x != -1)
+			break ;
+		j++;
+	}
+}

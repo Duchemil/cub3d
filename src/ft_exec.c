@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:22:58 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/13 14:40:58 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:53:03 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,19 +114,21 @@ void	cub3d_exec4(t_data *data, int x)
 	drawEnd = (double)lineHeight / 2 + data->info.screen.y / 2;
 	if (drawEnd >= data->info.screen.y)
 		drawEnd = data->info.screen.y - 1;
-	data->info.step.x =  data->info.player.x + (data->info.raydir.x * data->info.perpWallDist);
-	data->info.step.y =  data->info.player.y + (data->info.raydir.y * data->info.perpWallDist);
+	data->info.step.x = data->info.player.x + (data->info.raydir.x
+			* data->info.perpWallDist);
+	data->info.step.y = data->info.player.y + (data->info.raydir.y
+			* data->info.perpWallDist);
 	if (data->info.side == 0)
 		data->coord_texture = ((data->info.step.y - (int)data->info.step.y)
 				* 64);
 	if (data->info.side == 1)
 		data->coord_texture = ((data->info.step.x - (int)data->info.step.x)
 				* 64);
-	data->info.wall_dir.x  = data->info.step.x - data->info.player.x;
-	data->info.wall_dir.y  = data->info.step.y - data->info.player.y;
+	data->info.wall_dir.x = data->info.step.x - data->info.player.x;
+	data->info.wall_dir.y = data->info.step.y - data->info.player.y;
 	choose_texture(data);
 	data->info.line_step = 1.0 * 64 / lineHeight;
-	data->info.text_pos = (drawStart - data->info.screen.y / 2 + (double)lineHeight / 2)
-		* data->info.line_step;
+	data->info.text_pos = (drawStart - data->info.screen.y / 2
+			+ (double)lineHeight / 2) * data->info.line_step;
 	verticalLine(data, x, drawStart, drawEnd);
 }

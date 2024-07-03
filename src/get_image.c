@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:02:13 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/28 15:23:19 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:04:52 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	get_we_img(t_data *data, char *path)
 		return (write(2, "Error\nWest texture doesn't exist\n", 34), -1);
 	we->addr = mlx_get_data_addr(we->img_m, &we->bits_per_pixel,
 			&we->line_length, &we->endian);
-	data->verif[2] = 1;
+	data->verif[3] = 1;
 	data->WE.init = 1;
 	return (0);
 }
@@ -109,6 +109,6 @@ int	get_ceil_color(t_data *data, char *path)
 		return (write(2, "Error\nCeiling color value not within 0 - 255\n", 46),
 			-1);
 	data->ceiling_color = (r << 16 | g << 8 || b);
-	data->verif[4];
+	data->verif[4] = 1;
 	return (0);
 }

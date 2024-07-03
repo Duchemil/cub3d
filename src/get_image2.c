@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:17:18 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/28 15:32:51 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:04:45 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int	get_floor_color(t_data *data, char *path)
 		return (write(2, "Error\nFloor color value not within 0 - 255\n", 44),
 			-1);
 	data->floor_color = (r << 16 | g << 8 || b);
-	data->verif[4];
+	data->verif[5] = 1;
 	return (0);
 }
