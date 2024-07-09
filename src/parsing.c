@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:06:28 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/03 16:51:40 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/09 16:02:42 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	parsing2(t_data *data, char *map, t_parse *parse)
 	if (init_map(data, map, parse) != 0)
 		return (-1);
 	data->parse = parse;
-
+	init_player(data);
+	return (duplicate_map(data));
 }
 
 int	duplicate_map(t_data *data)
@@ -71,8 +72,27 @@ int	duplicate_map(t_data *data)
 	}
 	new_map[i][0] = '\0';
 	new_map[data->parse->max_height] = NULL;
-	error = ft_winnable(new_map, data->info.player.y, data->info.player.x);
+	error = ft_winnable(data, new_map, data->info.player.y,
+			data->info.player.x);
 	free_array(new_map);
 	return (error);
 }
 
+int	arg_check(t_data *data, int ac, char **argv)
+{
+	data->init = 0;
+	data->NO.init = 0;
+	data->SO.init = 0;
+	data->EA.init = 0;
+	data->WE.init = 0;
+	data->anim1.init = 0;
+	data->anim2.init = 0;
+	data->door.init = 0;
+	data->floor_color = -1;
+	data->ceiling_color = -1;
+	if (ac != 2)
+		return (printf("Error\nWrong number of args\n"), -1);
+	if (parsing(data, argv[1]) != 0)
+		return (-1);
+	return (0);
+}

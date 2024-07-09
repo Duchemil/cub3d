@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 15:35:03 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/03 16:00:53 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/09 16:11:58 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,33 @@ void	init_player(t_data *data)
 		if (data->info.player.x != -1)
 			break ;
 		j++;
+	}
+}
+
+void	init_orientation(t_data *data)
+{
+	if (data->info.player_dir  == 'E' || data->info.player_dir  == 'W')
+	{
+		data->info.dir.x = 0;
+		data->info.dir.y = 1;
+		data->info.plane.x = 0.66;
+		data->info.plane.y = 0;
+		if (data->info.player_dir  == 'W')
+		{
+			data->info.dir.y *= -1;
+			data->info.plane.x *= -1;
+		}
+	}
+	if (data->info.player_dir  == 'N'|| data->info.player_dir  == 'S')
+	{
+		data->info.dir.x = -1;
+		data->info.dir.y = 0;
+		data->info.plane.x = 0;
+		data->info.plane.y = 0.66;
+		if (data->info.player_dir  == 's')
+		{
+			data->info.dir.x *= -1;
+			data->info.plane.y *= -1;
+		}
 	}
 }

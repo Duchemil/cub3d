@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/03 16:52:02 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/09 15:57:52 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CUB3D_H
 
 # include "../mlx/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
@@ -91,11 +93,15 @@ typedef struct s_data
 	int		size_tex;
 	int		bits_per_pixel;
 	int		verif[8];
+	int		init;
 	t_parse	*parse;
 	t_img	NO;
 	t_img	SO;
 	t_img	EA;
 	t_img	WE;
+	t_img	anim1;
+	t_img	anim2;
+	t_img	door;
 	t_info	info;
 	int		floor_color;
 	int		ceiling_color;
@@ -155,9 +161,6 @@ void		init_player(t_data *data);
 
 /*				SPLIT			*/
 
-static int	check_split(int i, char c, int *index, char *s);
-static int	count_word(char *s, char c);
-static void	init_split(int *i, int *index, int *indice);
 char		*ft_substr(char *s, int start, int len);
 char		**ft_split(char *s, char c);
 
