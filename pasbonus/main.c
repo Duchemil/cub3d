@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:47:57 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/09 15:33:15 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/11 15:25:54 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	ft_init(t_data *data)
 {
 	data->info.rows = -1;
-	data->info.movement.x = 0;
-	data->info.movement.y = 0;
 	data->info.map = NULL;
 	data->info.screen.x = 720;
 	data->info.screen.y = 480;

@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 17:26:55 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/11 15:56:10 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:43:17 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	verticalLine(t_data *data, int x, double drawStart, double drawEnd)
 		data->info.text.y = (int)data->info.text_pos & (64 - 1);
 		data->info.text_pos += data->info.line_step;
 		print_texture(data, (double)x, height, get_pixel_color(data->info.ttp,
-					data->coord_texture, data->info.text.y));
+				data->coord_texture, data->info.text.y));
 		height++;
 	}
 	while (height < data->info.screen.y)
@@ -41,10 +41,13 @@ void	print_texture(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	mlx_get_data_addr(data->img_ptr, &data->bits_per_pixel, &data->line_length,
-			&data->endian);
-	dst = data->addr + (y * data->line_length + x * 4);
-	*(unsigned int *)dst = color;
+	if (color != 0x000000)
+	{
+		data->addr = mlx_get_data_addr(data->img_ptr, &data->bits_per_pixel,
+				&data->line_length, &data->endian);
+		dst = data->addr + (y * data->line_length + x * 4);
+		*(unsigned int *)dst = color;
+	}
 }
 
 void	choose_texture(t_data *data)

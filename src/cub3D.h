@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/09 15:57:52 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:15:08 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,11 @@ typedef struct img
 
 typedef struct s_parsing
 {
-	char	map[5000 + 1];
 	int		fd;
 	int		j;
 	int		index;
 	int		line;
 	int		big_line;
-	int		init;
 	int		max_height;
 }			t_parse;
 
@@ -61,7 +59,6 @@ typedef struct s_info_map
 	t_pos	start;
 	t_pos	player;
 	t_pos	box;
-	t_pos	movement;
 	t_pos	dir;
 	t_pos	plane;
 	t_pos	screen;
@@ -94,6 +91,8 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		verif[8];
 	int		init;
+	int		parse_init;
+	t_pos	max_size;
 	t_parse	*parse;
 	t_img	NO;
 	t_img	SO;
@@ -127,7 +126,7 @@ void		ft_turn(t_data *data, double speed);
 /*				CHECK			*/
 
 int			ft_cub(char *filename);
-int			ft_check_comps(t_data *data);
+int			ft_check_comps(char *map);
 int			valid_comp(char c);
 void		find_big_line(char *map, t_parse *parse);
 int			ft_winnable(t_data *data, char **map, int y, int x);
@@ -153,11 +152,14 @@ int			init_map(t_data *data, char *map, t_parse *parse);
 int			parsing(t_data *data, char *argv);
 int			parsing2(t_data *data, char *map, t_parse *parse);
 int			duplicate_map(t_data *data);
+int			arg_check(t_data *data, char **argv);
+char		**malloc_new_map(int *error, t_data *data);
 
 /*				INIT			*/
 
 int			init_img(t_data *data);
 void		init_player(t_data *data);
+void		init_orientation(t_data *data);
 
 /*				SPLIT			*/
 
@@ -195,6 +197,11 @@ int			ft_isnum(char *str);
 int			ft_strlen(char *str);
 char		*ft_strdup(const char *s1);
 
+/*				FREE			*/
+
+void		free_all(t_data *data);
+void		destroy_images(t_data *data);
+
 /*				EXEC			*/
 
 int			cub3d_exec(t_data *data);
@@ -212,6 +219,7 @@ int			get_pixel_color(t_img *img, int x, int y);
 /*				MINIMAP			*/
 
 void		print_minimap(t_data *data);
+void		get_max_size(t_data *data);
 void		minimap_pixel(t_data *data, int map_x, int map_y, char type);
 
 #endif

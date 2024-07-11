@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 15:35:03 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/09 16:11:58 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/11 17:22:06 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	init_img(t_data *data)
 			&data->line_length, &data->endian);
 	if (!data->addr)
 		return (on_destroy(data), 1);
+	data->init = 1;
 	return (0);
 }
 

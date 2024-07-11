@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:54:39 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/13 14:37:36 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/11 17:18:44 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	on_destroy(t_data *data)
 		free(data->info.map[i]);
 	free(data->info.map);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	// destroy image
 	mlx_destroy_image(data->mlx_ptr, data->NO.img_m);
 	mlx_destroy_image(data->mlx_ptr, data->SO.img_m);
 	mlx_destroy_image(data->mlx_ptr, data->EA.img_m);
@@ -33,7 +32,7 @@ int	on_destroy(t_data *data)
 int	on_keypress(int keysym, t_data *data)
 {
 	if (keysym == 53 || keysym == 65307)
-		on_destroy(data);
+		free_all(data);
 	if (keysym == 119 || keysym == 97 || keysym == 115 || keysym == 100)
 		ft_movement(keysym, data);
 	if (keysym == 65363 || keysym == 65361)

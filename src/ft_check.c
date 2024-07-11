@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:03:19 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/03 16:51:29 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:31:15 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,20 @@ int	ft_cub(char *filename)
 	return (0);
 }
 
-int	ft_check_comps(t_data *data)
+int	ft_check_comps(char *map)
 {
-	int	x;
-	int	y;
+	int	i;
 	int	p;
 
-	x = 0;
+	i = 0;
 	p = 0;
-	while (x < data->info.rows)
+	while (map[i])
 	{
-		y = 0;
-		while (data->info.map[x][y] != '\n')
-		{
-			if (valid_comp(data->info.map[x][y]) == 1)
-				p++;
-			else if (valid_comp(data->info.map[x][y]) == -1)
-				return (printf("Error\nWrong characters in map\n") - 1);
-			y++;
-		}
-		x++;
+		if (valid_comp(map[i]) == 1)
+			p++;
+		else if (valid_comp(map[i]) == -1)
+			return (printf("Error\nWrong characters in map\n") - 1);
+		i++;
 	}
 	if (p == 0 || p > 1)
 		return (printf("Error\nToo many/Not enough spawn in map\n") - 1);
@@ -69,21 +63,21 @@ int	ft_check_comps(t_data *data)
 
 int	valid_comp(char c)
 {
-	if (c == '0' || c == '1' || c == 'A' || c == 'D')
+	if (c == '0' || c == '1' || c == ' ' || c == 'D' || c == 'A' || c == '\n')
 		return (0);
-	else if (c == 'N' || c == 'E' || c == 'W' || c == 'S')
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (1);
 	return (-1);
 }
 
 int	ft_winnable(t_data *data, char **map, int y, int x)
 {
-	if ((map[y][x] != '0' && map[y][x] != '1' && map[y][x] != '9'
-			&& map[y][x] != 'D' && map[y][x] == 'A') || y == 0 || x == 0
+	if ((map[x][y] != '0' && map[x][y] != '1' && map[x][y] != '9'
+			&& map[x][y] != 'D' && map[x][y] == 'A') || y == 0 || x == 0
 		|| y == data->parse->max_height || x == data->parse->big_line)
 		return (-1);
-	map[y][x] = '9';
-	if (map[y][x] != '1' && map[y][x] != '9' && map[y][x] != 'A')
+	map[x][y] = '9';
+	if (map[x][y] != '1' && map[x][y] != '9' && map[x][y] != 'A')
 	{
 		if (ft_winnable(data, map, y + 1, x) == 1 || ft_winnable(data, map, y, x
 				+ 1) == 1 || ft_winnable(data, map, y - 1, x) == 1

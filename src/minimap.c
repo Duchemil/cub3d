@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:03:41 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/06/13 16:02:51 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:41:10 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void	print_minimap(t_data *data)
 {
-	int	map_x;
-	int	map_y;
+	int map_x;
+	int map_y;
 
 	map_y = 0;
-	while (map_y < data->info.rows)
+	get_max_size(data);
+	while (map_y < data->max_size.x)
 	{
 		map_x = 0;
-		while (map_x < data->info.cols)
+		while (map_x < data->max_size.y)
 		{
 			minimap_pixel(data, map_x, map_y, data->info.map[map_y][map_x]);
 			map_x++;
@@ -51,16 +52,35 @@ void	minimap_pixel(t_data *data, int map_x, int map_y, char type)
 		x = 0;
 		while (x < 10)
 		{
-			print_texture(data, (map_x * data->info.rows / 2) + x + 30, (map_y
-						* data->info.cols / 2) + y + 30, color);
+			print_texture(data, (map_x * 5) + x + 30, (map_y
+					* 5 ) + y + 30, color);
 			x++;
 		}
 		y++;
 	}
 }
 
-// void	draw_cub(t_data *data, int i, int j, int color)
-// {
+void	get_max_size(t_data *data)
+{
+	int	rows;
+	int	cols;
+	int	current_cols;
 
-// 	print_texture(data, i, j++, color);
-// }
+	rows = 0;
+	cols = 0;
+	while (data->info.map[rows] != NULL)
+	{
+		current_cols = 0;
+		while (data->info.map[rows][current_cols] != '\0')
+		{
+			current_cols++;
+		}
+		if (current_cols > cols)
+		{
+			cols = current_cols;
+		}
+		rows++;
+	}
+	data->max_size.x = rows;
+	data->max_size.y = cols;
+}

@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:02:13 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/01 14:04:52 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/11 17:07:57 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	get_ceil_color(t_data *data, char *path)
 
 	if (data->ceiling_color != -1)
 		return (write(2, "Error\nMore than one ceiling color in map\n", 42));
-	color = ft_split(path, ' ');
+	color = ft_split(path, ',');
 	if (!color || color[0] == NULL || color[1] == NULL || color[2] == NULL
 		|| ft_isnum(color[0]) == 1 || ft_isnum(color[1]) == 1
 		|| ft_isnum(color[2]) == 1)
@@ -108,7 +108,7 @@ int	get_ceil_color(t_data *data, char *path)
 	if ((r > 255 || r < 0) || (g > 255 || g < 0) || (b > 255 || b < 0))
 		return (write(2, "Error\nCeiling color value not within 0 - 255\n", 46),
 			-1);
-	data->ceiling_color = (r << 16 | g << 8 || b);
+	data->ceiling_color = (r << 16 | g << 8 | b);
 	data->verif[4] = 1;
 	return (0);
 }
