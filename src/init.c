@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 15:35:03 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/11 17:22:06 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:10:06 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	init_orientation(t_data *data)
 		data->info.dir.y = 0;
 		data->info.plane.x = 0;
 		data->info.plane.y = 0.66;
-		if (data->info.player_dir  == 's')
+		if (data->info.player_dir  == 'S')
 		{
 			data->info.dir.x *= -1;
 			data->info.plane.y *= -1;

@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:47:57 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/11 18:01:47 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/22 15:58:24 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	init_mlx(t_data *data)
 {
 	data->bits_per_pixel = 32;
 	data->init = 0;
-	// data->info.map = NULL;
+	data->info.map = NULL;
 	data->parse_init= 0;
 	data->info.screen.x = 720;
 	data->info.screen.y = 480;

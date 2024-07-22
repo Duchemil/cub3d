@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:03:41 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/11 18:41:10 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:08:27 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_minimap(t_data *data)
 	while (map_y < data->max_size.x)
 	{
 		map_x = 0;
-		while (map_x < data->max_size.y)
+		while (map_x < data->max_size.y && data->info.map[map_y][map_x])
 		{
 			minimap_pixel(data, map_x, map_y, data->info.map[map_y][map_x]);
 			map_x++;

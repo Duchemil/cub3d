@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:06:28 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/11 17:51:22 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/22 15:55:03 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	parsing(t_data *data, char *argv)
 	if (!parse)
 		return (free_all(data), -1);
 	data->parse_init = 1;
+	data->parse = parse;
 	parse->fd = open(argv, O_RDONLY);
 	if (!parse || !parse->fd)
 		return (printf("Error\nError whilst opening the map\n"), -1);
@@ -36,7 +37,6 @@ int	parsing(t_data *data, char *argv)
 	if (bytes >= 100000)
 		return (printf("Error\nMap is too big\n"), -1);
 	map[bytes] = '\0';
-	data->parse = parse;
 	return (parsing2(data, map, parse));
 }
 

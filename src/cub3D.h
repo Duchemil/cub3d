@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/11 18:15:08 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/07/22 15:56:20 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_info_map
 	char	player_dir;
 	int		rows;
 	int		cols;
+	int		map_init;
 	t_img	*ttp;
 	t_pos	start;
 	t_pos	player;
