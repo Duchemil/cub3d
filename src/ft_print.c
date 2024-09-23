@@ -6,7 +6,7 @@
 /*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 17:26:55 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/09/23 15:32:57 by agilles          ###   ########.fr       */
+/*   Updated: 2024/09/23 16:45:38 by agilles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	choose_texture(t_data *data)
 {
 	if (data->info.hit == 2)
 		data->info.ttp = &data->door;
-	if (data->info.hit == 3)
+	else if (data->info.hit == 3)
 	{
 		if ((get_current_time() % 2) == 0)
 			data->info.ttp = &data->anim1;
