@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 17:26:55 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/11 18:43:17 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:32:57 by agilles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,16 @@ void	print_texture(t_data *data, int x, int y, int color)
 
 void	choose_texture(t_data *data)
 {
-	if (data->info.side == 0 && data->info.wall_dir.x < 0)
+	if (data->info.hit == 2)
+		data->info.ttp = &data->door;
+	if (data->info.hit == 3)
+	{
+		if ((get_current_time() % 2) == 0)
+			data->info.ttp = &data->anim1;
+		else
+			data->info.ttp = &data->anim2;
+	}
+	else if (data->info.side == 0 && data->info.wall_dir.x < 0)
 		data->info.ttp = &data->NO;
 	else if (data->info.side == 0 && data->info.wall_dir.x > 0)
 		data->info.ttp = &data->SO;

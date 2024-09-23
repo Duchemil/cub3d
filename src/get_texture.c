@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:03:50 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/22 15:36:35 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:28:21 by agilles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	get_textures(t_data *data, int fd)
 		if (data->verif[0] == 1 && data->verif[1] == 1 && data->verif[2] == 1
 			&& data->verif[3] == 1 && data->verif[4] == 1
 			&& data->verif[5] == 1
-			// && data->verif[6] == 1 && data->verif[7] == 1 && data->verif[8] == 1
+			&& data->verif[6] == 1
+			&& data->verif[7] == 1 && data->verif[8] == 1
 			)
 			break ;
 
@@ -98,12 +99,12 @@ void	check_line_name(char **tab, t_data *data, int *error)
 		*error = get_ea_img(data, tab[1]);
 	else if (tab[0][0] == 'W' && tab[0][1] == 'E' && !tab[0][2])
 		*error = get_we_img(data, tab[1]);
-	// else if (tab[0][0] == 'D' && !tab[0][1])
-	// 	*error = get_door_img(data, tab[1]);
-	// else if (tab[0][0] == 'A' && tab[0][1] == '1' && !tab[0][2])
-	// 	*error = get_anim_img(data, tab[1]);
-	// else if (tab[0][0] == 'A' && tab[0][1] == '2' && !tab[0][2])
-	// 	*error = get_anim2_img(data, tab[1]);
+	else if (tab[0][0] == 'D' && tab[0][1] == 'O' && !tab[0][2])
+		*error = get_door_img(data, tab[1]);
+	else if (tab[0][0] == 'A' && tab[0][1] == '1' && !tab[0][2])
+		*error = get_anim1_img(data, tab[1]);
+	else if (tab[0][0] == 'A' && tab[0][1] == '2' && !tab[0][2])
+		*error = get_anim2_img(data, tab[1]);
 	else if (tab[0][0] == 'C' && !tab[0][1])
 		*error = get_ceil_color(data, tab[1]);
 	else if (tab[0][0] == 'F' && !tab[0][1])

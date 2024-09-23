@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:22:58 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/11 17:00:43 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:23:40 by agilles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,10 @@ void	cub3d_exec3(t_data *data, int x)
 		}
 		if (data->info.map[(int)data->info.box.x][(int)data->info.box.y] == '1')
 			data->info.hit = 1;
+		if (data->info.map[(int)data->info.box.x][(int)data->info.box.y] == 'D')
+			data->info.hit = 2;
+		if (data->info.map[(int)data->info.box.x][(int)data->info.box.y] == 'A')
+			data->info.hit = 3;
 	}
 	if (data->info.side == 0)
 		data->info.perpWallDist = (data->info.sideDist.x

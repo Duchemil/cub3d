@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/22 15:56:20 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:27:23 by agilles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <sys/time.h>
 
 typedef struct s_pos
 {
@@ -93,6 +94,7 @@ typedef struct s_data
 	int		verif[8];
 	int		init;
 	int		parse_init;
+	int		d_status;
 	t_pos	max_size;
 	t_parse	*parse;
 	t_img	NO;
@@ -183,7 +185,7 @@ int			get_we_img(t_data *data, char *path);
 int			get_ceil_color(t_data *data, char *path);
 
 int			get_floor_color(t_data *data, char *path);
-int			get_anim_img(t_data *data, char *path);
+int			get_anim1_img(t_data *data, char *path);
 int			get_anim2_img(t_data *data, char *path);
 int			get_door_img(t_data *data, char *path);
 
@@ -197,6 +199,7 @@ int			ft_isnum(char *str);
 
 int			ft_strlen(char *str);
 char		*ft_strdup(const char *s1);
+long		get_current_time(void);
 
 /*				FREE			*/
 
