@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/03 15:15:48 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:14:40 by agilles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_data
 	t_img	EA;
 	t_img	WE;
 	t_info	info;
+	int		d_status;
 	int		floor_color;
 	int		ceiling_color;
 }			t_data;

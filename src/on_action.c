@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   on_action.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:54:39 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/11 17:18:44 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:20:27 by agilles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ int	on_keypress(int keysym, t_data *data)
 			ft_turn(data, -0.03);
 		else
 			ft_turn(data, 0.03);
+	}
+	if (keysym == 101 || keysym == 32)
+	{
+		if (data->d_status == 1)
+			data->d_status = 0;
+		else
+			data->d_status = 1;
 	}
 	return (0);
 }

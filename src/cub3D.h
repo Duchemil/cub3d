@@ -6,7 +6,7 @@
 /*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/09/23 15:27:23 by agilles          ###   ########.fr       */
+/*   Updated: 2024/09/24 16:33:00 by agilles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ typedef struct s_data
 	int		init;
 	int		parse_init;
 	int		d_status;
+	int		anim_status;
+	long	anim_delay;
 	t_pos	max_size;
 	t_parse	*parse;
 	t_img	NO;

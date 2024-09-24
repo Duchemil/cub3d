@@ -6,7 +6,7 @@
 /*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 17:26:55 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/09/23 16:45:38 by agilles          ###   ########.fr       */
+/*   Updated: 2024/09/24 16:41:16 by agilles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,32 @@ void	print_texture(t_data *data, int x, int y, int color)
 	}
 }
 
-void	choose_texture(t_data *data)
+void	choose_anim(t_data *data)
 {
-	if (data->info.hit == 2)
-		data->info.ttp = &data->door;
-	else if (data->info.hit == 3)
+	if (data->anim_delay > (get_current_time() - 300))
 	{
-		if ((get_current_time() % 2) == 0)
+		if (data->anim_status == 1)
 			data->info.ttp = &data->anim1;
 		else
 			data->info.ttp = &data->anim2;
 	}
+	else
+	{
+		if (data->anim_status == 1)
+			data->anim_status = 0;
+		else
+			data->anim_status = 1;
+		data->anim_delay = get_current_time();
+	}
+}
+
+void	choose_texture(t_data *data)
+{
+
+	if (data->info.hit == 2)
+		data->info.ttp = &data->door;
+	else if (data->info.hit == 3)
+		choose_anim(data);
 	else if (data->info.side == 0 && data->info.wall_dir.x < 0)
 		data->info.ttp = &data->NO;
 	else if (data->info.side == 0 && data->info.wall_dir.x > 0)
@@ -79,3 +94,5 @@ int	get_pixel_color(t_img *img, int x, int y)
 				/ 8));
 	return (*(unsigned int *)pixel_addr);
 }
+
+

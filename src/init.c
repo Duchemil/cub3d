@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 15:35:03 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/22 16:10:06 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:34:55 by agilles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	init_img(t_data *data)
 {
+	data->d_status = 1;
+	data->anim_status = 0;
+	data->anim_delay = get_current_time();
 	data->img_ptr = mlx_new_image(data->mlx_ptr, 720, 480);
 	if (!data->img_ptr)
 		return (on_destroy(data), 1);
