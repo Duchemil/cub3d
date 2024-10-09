@@ -6,7 +6,7 @@
 /*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:22:58 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/09/23 15:23:40 by agilles          ###   ########.fr       */
+/*   Updated: 2024/09/24 17:11:48 by agilles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,12 @@ void	cub3d_exec3(t_data *data, int x)
 		if (data->info.map[(int)data->info.box.x][(int)data->info.box.y] == '1')
 			data->info.hit = 1;
 		if (data->info.map[(int)data->info.box.x][(int)data->info.box.y] == 'D')
-			data->info.hit = 2;
+		{
+			if (data->d_status == 1)
+				data->info.hit = 2;
+			else
+				data->info.hit = 0;
+		}
 		if (data->info.map[(int)data->info.box.x][(int)data->info.box.y] == 'A')
 			data->info.hit = 3;
 	}
