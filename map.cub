@@ -6,8 +6,7 @@ DO textures/door.xpm
 A1 textures/anim1.xpm
 A2 textures/anim2.xpm
 
-
-F 0,50,50
+F 50,50,50
 C 150,240,255
 
         1111111111111111111111111
