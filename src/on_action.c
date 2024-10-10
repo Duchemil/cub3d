@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   on_action.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:54:39 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/09/24 17:11:03 by agilles          ###   ########.fr       */
+/*   Updated: 2024/10/10 15:07:38 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 
 int	on_destroy(t_data *data)
 {
-	for (int i = 0; i < data->info.rows; i++)
+	int	i;
+
+	i = 0;
+	while (i < data->info.rows)
+	{
 		free(data->info.map[i]);
+		i++;
+	}
 	free(data->info.map);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_image(data->mlx_ptr, data->NO.img_m);

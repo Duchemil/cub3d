@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 15:35:03 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/09/24 16:34:55 by agilles          ###   ########.fr       */
+/*   Updated: 2024/10/10 15:04:41 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,44 @@ void	init_player(t_data *data)
 
 void	init_orientation(t_data *data)
 {
-	if (data->info.player_dir  == 'E' || data->info.player_dir  == 'W')
+	if (data->info.player_dir == 'E' || data->info.player_dir == 'W')
 	{
 		data->info.dir.x = 0;
 		data->info.dir.y = 1;
 		data->info.plane.x = 0.66;
 		data->info.plane.y = 0;
-		if (data->info.player_dir  == 'W')
+		if (data->info.player_dir == 'W')
 		{
 			data->info.dir.y *= -1;
 			data->info.plane.x *= -1;
 		}
 	}
-	if (data->info.player_dir  == 'N'|| data->info.player_dir  == 'S')
+	if (data->info.player_dir == 'N' || data->info.player_dir == 'S')
 	{
 		data->info.dir.x = -1;
 		data->info.dir.y = 0;
 		data->info.plane.x = 0;
 		data->info.plane.y = 0.66;
-		if (data->info.player_dir  == 'S')
+		if (data->info.player_dir == 'S')
 		{
 			data->info.dir.x *= -1;
 			data->info.plane.y *= -1;
 		}
 	}
+}
+
+int	ft_gnl_strchr(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i] && s)
+	{
+		if (s[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
 }

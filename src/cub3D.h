@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/09/24 16:33:00 by agilles          ###   ########.fr       */
+/*   Updated: 2024/10/10 15:03:53 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include <unistd.h>
 # include <sys/time.h>
+# include <unistd.h>
 
 typedef struct s_pos
 {
@@ -125,7 +125,11 @@ int			on_mouse(int x, int y, t_data *data);
 /*				MOVEMENT		*/
 
 void		ft_movement(int keysym, t_data *data);
-void		ft_movement2(int keysym, t_data *data);
+void		ft_movement_up(int keysym, t_data *data);
+void		ft_movement_down(int keysym, t_data *data);
+void		ft_movement_left(int keysym, t_data *data);
+void		ft_movement_right(int keysym, t_data *data);
+
 void		ft_turn(t_data *data, double speed);
 
 /*				CHECK			*/
@@ -142,7 +146,7 @@ void		get_next_line(int fd, int line, t_info *map);
 void		buff_erase(char *buff);
 char		*test(char *s1, char *dest);
 char		*ft_gnl_strjoin(char *s1, char *s2);
-int			ft_strlen_gnl(char *s, int j);
+int			ft_s_gnl(char *s, int j);
 int			ft_gnl_strchr(char *s);
 
 /*				GET_MAP			*/
@@ -214,10 +218,14 @@ int			cub3d_exec(t_data *data);
 void		cub3d_exec2(t_data *data, int x);
 void		cub3d_exec3(t_data *data, int x);
 void		cub3d_exec4(t_data *data, int x);
+void		cub3d_exec5(t_data *data, int x, int line_h, double dr_s);
+
+void		ft_info_hit(t_data *data);
 
 /*				PRINT			*/
 
-void		verticalLine(t_data *data, int x, double drawStart, double drawEnd);
+void		vertical_line(t_data *data, int x, double drawStart,
+				double drawEnd);
 void		print_texture(t_data *data, int x, int y, int color);
 void		choose_texture(t_data *data);
 int			get_pixel_color(t_img *img, int x, int y);

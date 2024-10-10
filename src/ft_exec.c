@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:22:58 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/09/24 17:11:48 by agilles          ###   ########.fr       */
+/*   Updated: 2024/10/10 14:52:55 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ int	cub3d_exec(t_data *data)
 			data->info.deltaDist.x = 1e30;
 		else
 			data->info.deltaDist.x = abs_val(1.0f / data->info.raydir.x);
-		if (data->info.raydir.y == 0)
-			data->info.deltaDist.y = 1e30;
-		else
-			data->info.deltaDist.y = abs_val(1.0f / data->info.raydir.y);
-		data->info.hit = 0;
 		cub3d_exec2(data, x);
 		x++;
 	}
@@ -46,6 +41,11 @@ int	cub3d_exec(t_data *data)
 
 void	cub3d_exec2(t_data *data, int x)
 {
+	if (data->info.raydir.y == 0)
+		data->info.deltaDist.y = 1e30;
+	else
+		data->info.deltaDist.y = abs_val(1.0f / data->info.raydir.y);
+	data->info.hit = 0;
 	if (data->info.raydir.x < 0)
 	{
 		data->info.step.x = -1;
@@ -58,6 +58,11 @@ void	cub3d_exec2(t_data *data, int x)
 		data->info.sideDist.x = (data->info.box.x + 1.0 - data->info.player.x)
 			* data->info.deltaDist.x;
 	}
+	cub3d_exec3(data, x);
+}
+
+void	cub3d_exec3(t_data *data, int x)
+{
 	if (data->info.raydir.y < 0)
 	{
 		data->info.step.y = -1;
@@ -70,63 +75,42 @@ void	cub3d_exec2(t_data *data, int x)
 		data->info.sideDist.y = (data->info.box.y + 1.0 - data->info.player.y)
 			* data->info.deltaDist.y;
 	}
-	cub3d_exec3(data, x);
-}
-
-void	cub3d_exec3(t_data *data, int x)
-{
 	while (data->info.hit == 0)
 	{
-		if (data->info.sideDist.x < data->info.sideDist.y)
-		{
-			data->info.sideDist.x += data->info.deltaDist.x;
-			data->info.box.x += data->info.step.x;
-			data->info.side = 0;
-		}
-		else
-		{
-			data->info.sideDist.y += data->info.deltaDist.y;
-			data->info.box.y += data->info.step.y;
-			data->info.side = 1;
-		}
-		if (data->info.map[(int)data->info.box.x][(int)data->info.box.y] == '1')
-			data->info.hit = 1;
-		if (data->info.map[(int)data->info.box.x][(int)data->info.box.y] == 'D')
-		{
-			if (data->d_status == 1)
-				data->info.hit = 2;
-			else
-				data->info.hit = 0;
-		}
-		if (data->info.map[(int)data->info.box.x][(int)data->info.box.y] == 'A')
-			data->info.hit = 3;
+		ft_info_hit(data);
 	}
+	cub3d_exec4(data, x);
+}
+
+void	cub3d_exec4(t_data *data, int x)
+{
+	int		lineheight;
+	double	drawstart;
+
 	if (data->info.side == 0)
 		data->info.perpWallDist = (data->info.sideDist.x
 				- data->info.deltaDist.x);
 	else
 		data->info.perpWallDist = (data->info.sideDist.y
 				- data->info.deltaDist.y);
-	cub3d_exec4(data, x);
-}
-
-void	cub3d_exec4(t_data *data, int x)
-{
-	int		lineHeight;
-	double	drawStart;
-	double	drawEnd;
-
-	lineHeight = (int)(data->info.screen.y / data->info.perpWallDist);
-	drawStart = (double)(-lineHeight) / 2 + data->info.screen.y / 2;
-	if (drawStart < 0)
-		drawStart = 0;
-	drawEnd = (double)lineHeight / 2 + data->info.screen.y / 2;
-	if (drawEnd >= data->info.screen.y)
-		drawEnd = data->info.screen.y - 1;
+	lineheight = (int)(data->info.screen.y / data->info.perpWallDist);
+	drawstart = (double)(-lineheight) / 2 + data->info.screen.y / 2;
+	if (drawstart < 0)
+		drawstart = 0;
 	data->info.step.x = data->info.player.x + (data->info.raydir.x
 			* data->info.perpWallDist);
 	data->info.step.y = data->info.player.y + (data->info.raydir.y
 			* data->info.perpWallDist);
+	cub3d_exec5(data, x, lineheight, drawstart);
+}
+
+void	cub3d_exec5(t_data *data, int x, int line_h, double dr_s)
+{
+	double	drawend;
+
+	drawend = (double)line_h / 2 + data->info.screen.y / 2;
+	if (drawend >= data->info.screen.y)
+		drawend = data->info.screen.y - 1;
 	if (data->info.side == 0)
 		data->coord_texture = ((data->info.step.y - (int)data->info.step.y)
 				* 64);
@@ -136,8 +120,8 @@ void	cub3d_exec4(t_data *data, int x)
 	data->info.wall_dir.x = data->info.step.x - data->info.player.x;
 	data->info.wall_dir.y = data->info.step.y - data->info.player.y;
 	choose_texture(data);
-	data->info.line_step = 1.0 * 64 / lineHeight;
-	data->info.text_pos = (drawStart - data->info.screen.y / 2
-			+ (double)lineHeight / 2) * data->info.line_step;
-	verticalLine(data, x, drawStart, drawEnd);
+	data->info.line_step = 1.0 * 64 / line_h;
+	data->info.text_pos = (dr_s - data->info.screen.y / 2 + (double)line_h / 2)
+		* data->info.line_step;
+	vertical_line(data, x, dr_s, drawend);
 }

@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:03:41 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/22 16:08:27 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:05:29 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	print_minimap(t_data *data)
 {
-	int map_x;
-	int map_y;
+	int	map_x;
+	int	map_y;
 
 	map_y = 0;
 	get_max_size(data);
@@ -53,7 +53,7 @@ void	minimap_pixel(t_data *data, int map_x, int map_y, char type)
 		while (x < 10)
 		{
 			print_texture(data, (map_x * 5) + x + 30, (map_y
-					* 5 ) + y + 30, color);
+					* 5) + y + 30, color);
 			x++;
 		}
 		y++;

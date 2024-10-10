@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:47:57 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/10/09 17:38:31 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:05:00 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	init_mlx(t_data *data)
 	data->bits_per_pixel = 32;
 	data->init = 0;
 	data->info.map = NULL;
-	data->parse_init= 0;
+	data->parse_init = 0;
 	data->info.screen.x = 720;
 	data->info.screen.y = 480;
 	data->info.player.x = -1;
@@ -68,11 +68,6 @@ int	main(int ac, char **argv)
 	ft_init(&data);
 	if (arg_check(&data, argv) != 0)
 		return (free_all(&data), -1);
-	// printf("Map:\n");
-	// for (int i = 0; i < data->parse->max_height; i++)
-	// {
-	// 	printf("%s\n", data->info.map[i]);
-	// }
 	init_orientation(&data);
 	init_img(&data);
 	mlx_hook(data.win_ptr, MotionNotify, PointerMotionMask, &on_mouse, &data);

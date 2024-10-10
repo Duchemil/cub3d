@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 17:26:55 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/09/24 16:41:16 by agilles          ###   ########.fr       */
+/*   Updated: 2024/10/10 14:38:39 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	verticalLine(t_data *data, int x, double drawStart, double drawEnd)
+void	vertical_line(t_data *data, int x, double drawstart, double drawend)
 {
 	double	height;
 
 	height = 0;
-	while (height < drawStart)
+	while (height < drawstart)
 	{
 		print_texture(data, x, height, data->ceiling_color);
 		height++;
 	}
-	while (height <= drawEnd)
+	while (height <= drawend)
 	{
 		data->info.text.y = (int)data->info.text_pos & (64 - 1);
 		data->info.text_pos += data->info.line_step;
@@ -71,7 +71,6 @@ void	choose_anim(t_data *data)
 
 void	choose_texture(t_data *data)
 {
-
 	if (data->info.hit == 2)
 		data->info.ttp = &data->door;
 	else if (data->info.hit == 3)
@@ -94,5 +93,3 @@ int	get_pixel_color(t_img *img, int x, int y)
 				/ 8));
 	return (*(unsigned int *)pixel_addr);
 }
-
-

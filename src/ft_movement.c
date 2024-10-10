@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_movement.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agilles <agilles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:23:58 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/10/09 16:45:38 by agilles          ###   ########.fr       */
+/*   Updated: 2024/10/10 14:35:35 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,84 +15,98 @@
 void	ft_movement(int keysym, t_data *data)
 {
 	if (keysym == 119)
+		ft_movement_up(keysym, data);
+	else if (keysym == 115)
+		ft_movement_down(keysym, data);
+	else if (keysym == 97)
+		ft_movement_left(keysym, data);
+	else if (keysym == 100)
+		ft_movement_right(keysym, data);
+}
+
+void	ft_movement_up(int keysym, t_data *data)
+{
+	if (keysym == 119)
 	{
 		if (data->info.map[(int)(data->info.player.x + data->info.dir.x
 				* data->info.moveSpeed)][(int)data->info.player.y] == '0' ||
-				(data->info.map[(int)(data->info.player.x + data->info.dir.x
-				* data->info.moveSpeed)][(int)data->info.player.y] == 'D' && data->d_status == 0))
+			(data->info.map[(int)(data->info.player.x + data->info.dir.x
+					* data->info.moveSpeed)][(int)data->info.player.y] == 'D'
+					&& data->d_status == 0))
 			data->info.player.x += data->info.dir.x * data->info.moveSpeed;
 		if (data->info.map[(int)(data->info.player.x)][(int)(data->info.player.y
 				+ data->info.dir.y * data->info.moveSpeed)] == '0' ||
-				(data->info.map[(int)(data->info.player.x)][(int)(data->info.player.y
-				+ data->info.dir.y * data->info.moveSpeed)] == 'D' && data->d_status == 0))
+			(data->info.map[(int)(data->info.player.x)]
+					[(int)(data->info.player.y + data->info.dir.y
+					* data->info.moveSpeed)] == 'D'
+					&& data->d_status == 0))
 			data->info.player.y += data->info.dir.y * data->info.moveSpeed;
 		cub3d_exec(data);
 		return ;
 	}
+}
+
+void	ft_movement_down(int keysym, t_data *data)
+{
 	if (keysym == 115)
 	{
 		if (data->info.map[(int)(data->info.player.x - data->info.dir.x
 				* data->info.moveSpeed)][(int)data->info.player.y] == '0' ||
-				(data->info.map[(int)(data->info.player.x - data->info.dir.x
-				* data->info.moveSpeed)][(int)data->info.player.y] == 'D' && data->d_status == 0))
+			(data->info.map[(int)(data->info.player.x - data->info.dir.x
+					* data->info.moveSpeed)][(int)data->info.player.y] == 'D'
+					&& data->d_status == 0))
 			data->info.player.x -= data->info.dir.x * data->info.moveSpeed;
 		if (data->info.map[(int)(data->info.player.x)][(int)(data->info.player.y
 				- data->info.dir.y * data->info.moveSpeed)] == '0' ||
-				(data->info.map[(int)(data->info.player.x)][(int)(data->info.player.y
-				- data->info.dir.y * data->info.moveSpeed)] == 'D' && data->d_status == 0))
+			(data->info.map[(int)(data->info.player.x)]
+					[(int)(data->info.player.y - data->info.dir.y
+					* data->info.moveSpeed)] == 'D'
+					&& data->d_status == 0))
 			data->info.player.y -= data->info.dir.y * data->info.moveSpeed;
 		cub3d_exec(data);
 		return ;
 	}
-	ft_movement2(keysym, data);
 }
 
-void	ft_movement2(int keysym, t_data *data)
+void	ft_movement_left(int keysym, t_data *data)
 {
 	if (keysym == 97)
 	{
 		if (data->info.map[(int)(data->info.player.x - data->info.plane.x
 				* data->info.moveSpeed)][(int)data->info.player.y] == '0' ||
-				(data->info.map[(int)(data->info.player.x - data->info.plane.x
-				* data->info.moveSpeed)][(int)data->info.player.y] == 'D' && data->d_status == 0))
+			(data->info.map[(int)(data->info.player.x - data->info.plane.x
+					* data->info.moveSpeed)][(int)data->info.player.y] == 'D'
+					&& data->d_status == 0))
 			data->info.player.x -= data->info.plane.x * data->info.moveSpeed;
 		if (data->info.map[(int)(data->info.player.x)][(int)(data->info.player.y
 				- data->info.plane.y * data->info.moveSpeed)] == '0' ||
-				(data->info.map[(int)(data->info.player.x)][(int)(data->info.player.y
-				- data->info.plane.y * data->info.moveSpeed)] == 'D' && data->d_status == 0))
+			(data->info.map[(int)(data->info.player.x)]
+					[(int)(data->info.player.y - data->info.plane.y
+					* data->info.moveSpeed)] == 'D'
+					&& data->d_status == 0))
 			data->info.player.y -= data->info.plane.y * data->info.moveSpeed;
-		cub3d_exec(data);
-		return ;
-	}
-	if (keysym == 100)
-	{
-		if (data->info.map[(int)(data->info.player.x + data->info.plane.x
-				* data->info.moveSpeed)][(int)data->info.player.y] == '0' ||
-				(data->info.map[(int)(data->info.player.x + data->info.plane.x
-				* data->info.moveSpeed)][(int)data->info.player.y] == 'D' && data->d_status == 0))
-			data->info.player.x += data->info.plane.x * data->info.moveSpeed;
-		if (data->info.map[(int)(data->info.player.x)][(int)(data->info.player.y
-				+ data->info.plane.y * data->info.moveSpeed)] == '0' ||
-				(data->info.map[(int)(data->info.player.x)][(int)(data->info.player.y
-				+ data->info.plane.y * data->info.moveSpeed)] == 'D' && data->d_status == 0))
-			data->info.player.y += data->info.plane.y * data->info.moveSpeed;
 		cub3d_exec(data);
 		return ;
 	}
 }
 
-void	ft_turn(t_data *data, double speed)
+void	ft_movement_right(int keysym, t_data *data)
 {
-	double	oldDir;
-	double	oldPlane;
-
-	oldDir = data->info.dir.x;
-	oldPlane = data->info.plane.x;
-	data->info.dir.x = data->info.dir.x * cos(speed) - data->info.dir.y
-		* sin(speed);
-	data->info.dir.y = oldDir * sin(speed) + data->info.dir.y * cos(speed);
-	data->info.plane.x = data->info.plane.x * cos(speed) - data->info.plane.y
-		* sin(speed);
-	data->info.plane.y = oldPlane * sin(speed) + data->info.plane.y
-		* cos(speed);
+	if (keysym == 100)
+	{
+		if (data->info.map[(int)(data->info.player.x + data->info.plane.x
+				* data->info.moveSpeed)][(int)data->info.player.y] == '0' ||
+			(data->info.map[(int)(data->info.player.x + data->info.plane.x
+					* data->info.moveSpeed)][(int)data->info.player.y] == 'D'
+					&& data->d_status == 0))
+			data->info.player.x += data->info.plane.x * data->info.moveSpeed;
+		if (data->info.map[(int)(data->info.player.x)][(int)(data->info.player.y
+				+ data->info.plane.y * data->info.moveSpeed)] == '0' ||
+			(data->info.map[(int)(data->info.player.x)]
+					[(int)(data->info.player.y + data->info.plane.y
+					* data->info.moveSpeed)] == 'D' && data->d_status == 0))
+			data->info.player.y += data->info.plane.y * data->info.moveSpeed;
+		cub3d_exec(data);
+		return ;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:03:50 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/10/09 17:44:10 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:03:02 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,15 @@ int	get_textures(t_data *data, int fd)
 		if (check_read(buff, str, data) != 0)
 			return (-1);
 		if (data->verif[0] == 1 && data->verif[1] == 1 && data->verif[2] == 1
-			&& data->verif[3] == 1 && data->verif[4] == 1
-			&& data->verif[5] == 1
-			&& data->verif[6] == 1
-			&& data->verif[7] == 1 && data->verif[8] == 1
-			)
+			&& data->verif[3] == 1 && data->verif[4] == 1 && data->verif[5] == 1
+			&& data->verif[6] == 1 && data->verif[7] == 1
+			&& data->verif[8] == 1)
 			break ;
-
 	}
 	return (0);
 }
 
-int	check_read(char	*buff, char *str, t_data *data)
+int	check_read(char *buff, char *str, t_data *data)
 {
 	int	error;
 

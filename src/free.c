@@ -6,11 +6,11 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 15:37:05 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/10/09 17:40:43 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:02:41 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3D.h"
+#include "cub3D.h"
 
 void	free_all(t_data *data)
 {

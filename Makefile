@@ -6,7 +6,7 @@
 #    By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 13:31:42 by lduchemi          #+#    #+#              #
-#    Updated: 2024/07/11 15:57:40 by lduchemi         ###   ########.fr        #
+#    Updated: 2024/10/10 14:52:35 by lduchemi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,10 @@ RM = @rm -f
 NAME = cub3D
 SRC =	./src/ft_check.c \
 		./src/ft_exec.c \
+		./src/ft_exec2.c \
 		./src/free.c \
 		./src/ft_movement.c \
+		./src/ft_movement2.c \
 		./src/ft_print.c \
 		./src/ft_split.c \
 		./src/get_image.c \
