@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:02:13 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/11 17:07:57 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:19:10 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	get_no_img(t_data *data, char *path)
 {
 	t_img	*no;
 
-	if (data->NO.init != 0)
+	if (data->no.init != 0)
 		return (write(2, "Error\nMore than one north texture in map\n", 42));
-	no = &data->NO;
+	no = &data->no;
 	no->img_m = mlx_xpm_file_to_image(data->mlx_ptr, path, &data->size_tex,
 			&data->size_tex);
 	if (!no->img_m)
@@ -26,7 +26,7 @@ int	get_no_img(t_data *data, char *path)
 	no->addr = mlx_get_data_addr(no->img_m, &no->bits_per_pixel,
 			&no->line_length, &no->endian);
 	data->verif[0] = 1;
-	data->NO.init = 1;
+	data->no.init = 1;
 	return (0);
 }
 
@@ -34,9 +34,9 @@ int	get_so_img(t_data *data, char *path)
 {
 	t_img	*so;
 
-	if (data->SO.init != 0)
+	if (data->so.init != 0)
 		return (write(2, "Error\nMore than one south texture in map\n", 42));
-	so = &data->SO;
+	so = &data->so;
 	so->img_m = mlx_xpm_file_to_image(data->mlx_ptr, path, &data->size_tex,
 			&data->size_tex);
 	if (!so->img_m)
@@ -44,7 +44,7 @@ int	get_so_img(t_data *data, char *path)
 	so->addr = mlx_get_data_addr(so->img_m, &so->bits_per_pixel,
 			&so->line_length, &so->endian);
 	data->verif[1] = 1;
-	data->SO.init = 1;
+	data->so.init = 1;
 	return (0);
 }
 
@@ -52,9 +52,9 @@ int	get_ea_img(t_data *data, char *path)
 {
 	t_img	*ea;
 
-	if (data->EA.init != 0)
+	if (data->ea.init != 0)
 		return (write(2, "Error\nMore than one east texture in map\n", 41));
-	ea = &data->EA;
+	ea = &data->ea;
 	ea->img_m = mlx_xpm_file_to_image(data->mlx_ptr, path, &data->size_tex,
 			&data->size_tex);
 	if (!ea->img_m)
@@ -62,7 +62,7 @@ int	get_ea_img(t_data *data, char *path)
 	ea->addr = mlx_get_data_addr(ea->img_m, &ea->bits_per_pixel,
 			&ea->line_length, &ea->endian);
 	data->verif[2] = 1;
-	data->EA.init = 1;
+	data->ea.init = 1;
 	return (0);
 }
 
@@ -70,9 +70,9 @@ int	get_we_img(t_data *data, char *path)
 {
 	t_img	*we;
 
-	if (data->WE.init != 0)
+	if (data->we.init != 0)
 		return (write(2, "Error\nMore than one west texture in map\n", 41));
-	we = &data->WE;
+	we = &data->we;
 	we->img_m = mlx_xpm_file_to_image(data->mlx_ptr, path, &data->size_tex,
 			&data->size_tex);
 	if (!we->img_m)
@@ -80,7 +80,7 @@ int	get_we_img(t_data *data, char *path)
 	we->addr = mlx_get_data_addr(we->img_m, &we->bits_per_pixel,
 			&we->line_length, &we->endian);
 	data->verif[3] = 1;
-	data->WE.init = 1;
+	data->we.init = 1;
 	return (0);
 }
 

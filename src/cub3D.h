@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:42:22 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/10/10 15:03:53 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:20:11 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,16 @@ typedef struct s_info_map
 	t_pos	plane;
 	t_pos	screen;
 	t_pos	raydir;
-	t_pos	deltaDist;
-	t_pos	sideDist;
+	t_pos	deltadist;
+	t_pos	sidedist;
 	t_pos	camera;
 	t_pos	step;
 	t_pos	text;
 	t_pos	wall_dir;
 	double	line_step;
 	double	text_pos;
-	double	perpWallDist;
-	double	moveSpeed;
+	double	perpwalldist;
+	double	movespeed;
 	int		fd;
 	int		side;
 	int		hit;
@@ -99,10 +99,10 @@ typedef struct s_data
 	long	anim_delay;
 	t_pos	max_size;
 	t_parse	*parse;
-	t_img	NO;
-	t_img	SO;
-	t_img	EA;
-	t_img	WE;
+	t_img	no;
+	t_img	so;
+	t_img	ea;
+	t_img	we;
 	t_img	anim1;
 	t_img	anim2;
 	t_img	door;

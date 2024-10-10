@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 15:37:05 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/10/10 15:02:41 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:19:10 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void	free_all(t_data *data)
 
 void	destroy_images(t_data *data)
 {
-	if (data->NO.init == 1)
-		mlx_destroy_image(data->mlx_ptr, data->NO.img_m);
-	if (data->SO.init == 1)
-		mlx_destroy_image(data->mlx_ptr, data->SO.img_m);
-	if (data->EA.init == 1)
-		mlx_destroy_image(data->mlx_ptr, data->EA.img_m);
-	if (data->WE.init == 1)
-		mlx_destroy_image(data->mlx_ptr, data->WE.img_m);
+	if (data->no.init == 1)
+		mlx_destroy_image(data->mlx_ptr, data->no.img_m);
+	if (data->so.init == 1)
+		mlx_destroy_image(data->mlx_ptr, data->so.img_m);
+	if (data->ea.init == 1)
+		mlx_destroy_image(data->mlx_ptr, data->ea.img_m);
+	if (data->we.init == 1)
+		mlx_destroy_image(data->mlx_ptr, data->we.img_m);
 	if (data->anim1.init == 1)
 		mlx_destroy_image(data->mlx_ptr, data->anim1.img_m);
 	if (data->anim2.init == 1)

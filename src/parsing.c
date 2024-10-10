@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:06:28 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/07/22 15:55:03 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:19:10 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ int	duplicate_map(t_data *data)
 int	arg_check(t_data *data, char **argv)
 {
 	data->init = 0;
-	data->NO.init = 0;
-	data->SO.init = 0;
-	data->EA.init = 0;
-	data->WE.init = 0;
+	data->no.init = 0;
+	data->so.init = 0;
+	data->ea.init = 0;
+	data->we.init = 0;
 	data->anim1.init = 0;
 	data->anim2.init = 0;
 	data->door.init = 0;

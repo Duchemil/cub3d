@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:46:23 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/10/10 14:52:44 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:19:51 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	ft_info_hit(t_data *data)
 {
-	if (data->info.sideDist.x < data->info.sideDist.y)
+	if (data->info.sidedist.x < data->info.sidedist.y)
 	{
-		data->info.sideDist.x += data->info.deltaDist.x;
+		data->info.sidedist.x += data->info.deltadist.x;
 		data->info.box.x += data->info.step.x;
 		data->info.side = 0;
 	}
 	else
 	{
-		data->info.sideDist.y += data->info.deltaDist.y;
+		data->info.sidedist.y += data->info.deltadist.y;
 		data->info.box.y += data->info.step.y;
 		data->info.side = 1;
 	}

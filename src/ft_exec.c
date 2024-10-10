@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:22:58 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/10/10 14:52:55 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:20:02 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	cub3d_exec(t_data *data)
 	double	x;
 
 	x = 0;
-	data->info.perpWallDist = 0;
+	data->info.perpwalldist = 0;
 	while (x < data->info.screen.x)
 	{
 		data->info.camera.x = 2.0f * x / data->info.screen.x - 1.0f;
@@ -28,9 +28,9 @@ int	cub3d_exec(t_data *data)
 		data->info.box.x = (int)data->info.player.x;
 		data->info.box.y = (int)data->info.player.y;
 		if (data->info.raydir.x == 0)
-			data->info.deltaDist.x = 1e30;
+			data->info.deltadist.x = 1e30;
 		else
-			data->info.deltaDist.x = abs_val(1.0f / data->info.raydir.x);
+			data->info.deltadist.x = abs_val(1.0f / data->info.raydir.x);
 		cub3d_exec2(data, x);
 		x++;
 	}
@@ -42,21 +42,21 @@ int	cub3d_exec(t_data *data)
 void	cub3d_exec2(t_data *data, int x)
 {
 	if (data->info.raydir.y == 0)
-		data->info.deltaDist.y = 1e30;
+		data->info.deltadist.y = 1e30;
 	else
-		data->info.deltaDist.y = abs_val(1.0f / data->info.raydir.y);
+		data->info.deltadist.y = abs_val(1.0f / data->info.raydir.y);
 	data->info.hit = 0;
 	if (data->info.raydir.x < 0)
 	{
 		data->info.step.x = -1;
-		data->info.sideDist.x = (data->info.player.x - data->info.box.x)
-			* data->info.deltaDist.x;
+		data->info.sidedist.x = (data->info.player.x - data->info.box.x)
+			* data->info.deltadist.x;
 	}
 	else
 	{
 		data->info.step.x = 1;
-		data->info.sideDist.x = (data->info.box.x + 1.0 - data->info.player.x)
-			* data->info.deltaDist.x;
+		data->info.sidedist.x = (data->info.box.x + 1.0 - data->info.player.x)
+			* data->info.deltadist.x;
 	}
 	cub3d_exec3(data, x);
 }
@@ -66,14 +66,14 @@ void	cub3d_exec3(t_data *data, int x)
 	if (data->info.raydir.y < 0)
 	{
 		data->info.step.y = -1;
-		data->info.sideDist.y = (data->info.player.y - data->info.box.y)
-			* data->info.deltaDist.y;
+		data->info.sidedist.y = (data->info.player.y - data->info.box.y)
+			* data->info.deltadist.y;
 	}
 	else
 	{
 		data->info.step.y = 1;
-		data->info.sideDist.y = (data->info.box.y + 1.0 - data->info.player.y)
-			* data->info.deltaDist.y;
+		data->info.sidedist.y = (data->info.box.y + 1.0 - data->info.player.y)
+			* data->info.deltadist.y;
 	}
 	while (data->info.hit == 0)
 	{
@@ -88,19 +88,19 @@ void	cub3d_exec4(t_data *data, int x)
 	double	drawstart;
 
 	if (data->info.side == 0)
-		data->info.perpWallDist = (data->info.sideDist.x
-				- data->info.deltaDist.x);
+		data->info.perpwalldist = (data->info.sidedist.x
+				- data->info.deltadist.x);
 	else
-		data->info.perpWallDist = (data->info.sideDist.y
-				- data->info.deltaDist.y);
-	lineheight = (int)(data->info.screen.y / data->info.perpWallDist);
+		data->info.perpwalldist = (data->info.sidedist.y
+				- data->info.deltadist.y);
+	lineheight = (int)(data->info.screen.y / data->info.perpwalldist);
 	drawstart = (double)(-lineheight) / 2 + data->info.screen.y / 2;
 	if (drawstart < 0)
 		drawstart = 0;
 	data->info.step.x = data->info.player.x + (data->info.raydir.x
-			* data->info.perpWallDist);
+			* data->info.perpwalldist);
 	data->info.step.y = data->info.player.y + (data->info.raydir.y
-			* data->info.perpWallDist);
+			* data->info.perpwalldist);
 	cub3d_exec5(data, x, lineheight, drawstart);
 }
 

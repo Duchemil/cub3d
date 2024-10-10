@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 17:26:55 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/10/10 14:38:39 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:19:10 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ void	choose_texture(t_data *data)
 	else if (data->info.hit == 3)
 		choose_anim(data);
 	else if (data->info.side == 0 && data->info.wall_dir.x < 0)
-		data->info.ttp = &data->NO;
+		data->info.ttp = &data->no;
 	else if (data->info.side == 0 && data->info.wall_dir.x > 0)
-		data->info.ttp = &data->SO;
+		data->info.ttp = &data->so;
 	else if (data->info.side == 1 && data->info.wall_dir.y < 0)
-		data->info.ttp = &data->EA;
+		data->info.ttp = &data->ea;
 	else if (data->info.side == 1 && data->info.wall_dir.y >= 0)
-		data->info.ttp = &data->WE;
+		data->info.ttp = &data->we;
 }
 
 int	get_pixel_color(t_img *img, int x, int y)

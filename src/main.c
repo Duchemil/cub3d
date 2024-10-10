@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:47:57 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/10/10 15:05:00 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:20:11 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_init(t_data *data)
 	data->verif[6] = 0;
 	data->verif[7] = 0;
 	data->verif[8] = 0;
-	data->info.moveSpeed = 0.099;
+	data->info.movespeed = 0.099;
 }
 
 int	init_mlx(t_data *data)

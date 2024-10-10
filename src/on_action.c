@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:54:39 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/10/10 15:07:38 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:19:10 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	on_destroy(t_data *data)
 	}
 	free(data->info.map);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->NO.img_m);
-	mlx_destroy_image(data->mlx_ptr, data->SO.img_m);
-	mlx_destroy_image(data->mlx_ptr, data->EA.img_m);
-	mlx_destroy_image(data->mlx_ptr, data->WE.img_m);
+	mlx_destroy_image(data->mlx_ptr, data->no.img_m);
+	mlx_destroy_image(data->mlx_ptr, data->so.img_m);
+	mlx_destroy_image(data->mlx_ptr, data->ea.img_m);
+	mlx_destroy_image(data->mlx_ptr, data->we.img_m);
 	mlx_destroy_image(data->mlx_ptr, data->img_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);

@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:03:41 by lduchemi          #+#    #+#             */
-/*   Updated: 2024/10/10 15:05:29 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:35:01 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	minimap_pixel(t_data *data, int map_x, int map_y, char type)
 		color = 0xFF0000;
 	else if (type == '0')
 		color = 0xFFFFFF;
-	else if (type == '1')
+	else if (type == '1' || type == 'A' || type == 'D')
 		color = 0x808080;
 	else
 		color = 0x000000;
