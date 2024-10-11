@@ -1,10 +1,10 @@
-NO textures/BlueWall.xpm
+NO textures/GrayStone.xpm
 SO textures/BrownWall.xpm
 WE textures/GrayBrick.xpm
 EA textures/RedWall.xpm
 DO textures/door.xpm
-A1 textures/anim1.xpm
-A2 textures/anim2.xpm
+A1 textures/anim1bis.xpm
+A2 textures/anim2bis.xpm
 
 F 50,50,50
 C 150,240,255
